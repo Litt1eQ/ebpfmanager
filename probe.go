@@ -684,7 +684,7 @@ func (p *Probe) attachUprobe() error {
 
 	p.funcName = p.AttachToFuncName
 
-	ex, err := link.OpenExecutable(p.BinaryPath)
+	ex, err := openExecutableForUprobe(p.BinaryPath, p.UAddress)
 	if err != nil {
 		return errors.New(fmt.Sprintf("error:%v , couldn't enable uprobe %s", err, p.EbpfFuncName))
 	}
